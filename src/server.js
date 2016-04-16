@@ -7,13 +7,13 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-const token = "<page_access_token>";
+const token = 'CAANhtjyR1X8BAC6gZBeZAbmyCNQ8Gjs5PnDIApCZAjPN4Y8Tf1ePvT0KHFnERueqI7DwNoLtl6NZCpByLp4vtVGT9D6HiSdgOYSJkclA2iU9ejdcomUPdVRlxueTYMLsxu5NlWWDSflZAZA8Qpbn7J3f1tdmH4cO0zGXu9YHVjDh4fTVxMHwiuJLCaxEYVq30ZD';
 
 function sendTextMessage(sender, text) {
   const messageData = { text };
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
+    qs: {access_token: token},
     method: 'POST',
     json: {
       recipient: {id:sender},
