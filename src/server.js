@@ -1,55 +1,40 @@
-import Express from 'express';
+var express    = require('express');
+var bodyParser = require('body-parser');
 
-const serverPort = 3990;
-const app = new Express();
+var serverPort = 3990;
+var app = express();
 
-app.get('/', (req, res) => {
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+})); 
+
+app.get('/', function (req, res) {
   res.send('Hello');
 });
 
-const token = 'CAANhtjyR1X8BAC6gZBeZAbmyCNQ8Gjs5PnDIApCZAjPN4Y8Tf1ePvT0KHFnERueqI7DwNoLtl6NZCpByLp4vtVGT9D6HiSdgOYSJkclA2iU9ejdcomUPdVRlxueTYMLsxu5NlWWDSflZAZA8Qpbn7J3f1tdmH4cO0zGXu9YHVjDh4fTVxMHwiuJLCaxEYVq30ZD';
-
-function sendTextMessage(sender, text) {
-  const messageData = { text };
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token: token},
-    method: 'POST',
-    json: {
-      recipient: {id:sender},
-      message: messageData,
-    },
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-    }
-  });
-}
-
-app.post('/webhook/', (req, res) => {
-  const messaging_events = req.body.entry[0].messaging;
-  for (let i = 0; i < messaging_events.length; i++) {
-    const event = req.body.entry[0].messaging[i];
-    const sender = event.sender.id;
-    if (event.message && event.message.text) {
-      const text = event.message.text;
-      sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
-    }
-  }
-  res.sendStatus(200);
-});
-
-app.get('/webhook/', (req, res) => {
+app.get('/webhook/', function (req, res) {
   if (req.query['hub.verify_token'] === 'rob_the_r_score_god') {
     res.send(req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
 });
 
-app.listen(serverPort, err => {
+app.post('/webhook/', function (req, res) {
+  messaging_events = req.body.entry[0].messaging;
+  for (i = 0; i < messaging_events.length; i++) {
+    event = req.body.entry[0].messaging[i];
+    sender = event.sender.id;
+    if (event.message && event.message.text) {
+      text = event.message.text;
+      console.log(text);
+    }
+  }
+  res.sendStatus(200);
+});
+
+app.listen(serverPort, function (err) {
   if (!err) {
-    console.log(`Server running on port ${serverPort}`);
+    console.log('Server running on port ' + serverPort);
   }
 });
