@@ -1,0 +1,9 @@
+{
+  "extends": "airbnb/legacy",
+  "env": {
+    "node": true,
+   },
+   "rules": {
+    "no-console": ["error", { allow: ["warn", "error", "log"] }]
+   }
+}

@@ -1,52 +1,58 @@
-var express    = require('express');
+var express = require('express');
 var bodyParser = require('body-parser');
-var request    = require('request');
+var request = require('request');
 
 var serverPort = 3990;
 var app = express();
 
+var token = 'CAANhtjyR1X8BANoATlQ1E4svnZBZCyZAe58vIKVZBSKqKJSIZAOwakwwjkEZA0ZAcUQzJgk5ZBLvwfzM4YG0xBA8DXzy9KSO7i0qetEBPhYiWR5Hgcf4rloBLRDaHNDeZAcXZAFCvUaei8DycZBuHV0j5Hfe7P2tsEut51EhIFP326GZBGZB9OgnmFO1jLn8G9JRqld4ZD'; // eslint-disable-line
+
 app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({
   extended: true
-})); 
+}));
 
-app.get('/', function (req, res) {
+app.get('/', function getRoot(req, res) {
   res.send('Hello');
 });
 
-app.get('/webhook/', function (req, res) {
+app.get('/webhook/', function getWebhook(req, res) {
   if (req.query['hub.verify_token'] === 'rob_the_r_score_god') {
     res.send(req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
 });
 
-var token = "CAANhtjyR1X8BANoATlQ1E4svnZBZCyZAe58vIKVZBSKqKJSIZAOwakwwjkEZA0ZAcUQzJgk5ZBLvwfzM4YG0xBA8DXzy9KSO7i0qetEBPhYiWR5Hgcf4rloBLRDaHNDeZAcXZAFCvUaei8DycZBuHV0j5Hfe7P2tsEut51EhIFP326GZBGZB9OgnmFO1jLn8G9JRqld4ZD";
-
 function sendTextMessage(sender, text) {
-  messageData = {
-    text: text,
+  var messageData = {
+    text: text
   };
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
-      method: 'POST',
-      json: {
-        recipient: {id:sender},
-        message: messageData,
-      }
-    }, function(error, response, body) {
-      if (error) {
-        console.log('Error sending message: ', error);
-      } else if (response.body.error) {
-        console.log('Error: ', response.body.error);
-      }
-    });
+    qs: { access_token: token },
+    method: 'POST',
+    json: {
+      recipient: { id: sender },
+      message: messageData
+    }
+  }, function handleError(error, response) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
 }
 
-app.post('/webhook/', function (req, res) {
-  messaging_events = req.body.entry[0].messaging;
-  for (i = 0; i < messaging_events.length; i++) {
+app.post('/webhook/', function postWebhook(req, res) {
+  var messagingEvents = req.body.entry[0].messaging;
+  var i;
+  var event;
+  var sender;
+  var text;
+
+  for (i = 0; i < messagingEvents.length; i++) {
     event = req.body.entry[0].messaging[i];
     sender = event.sender.id;
     if (event.message && event.message.text) {
@@ -58,7 +64,7 @@ app.post('/webhook/', function (req, res) {
   res.sendStatus(200);
 });
 
-app.listen(serverPort, function (err) {
+app.listen(serverPort, function runServer(err) {
   if (!err) {
     console.log('Server running on port ' + serverPort);
   }
