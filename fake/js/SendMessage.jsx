@@ -40,9 +40,9 @@ class SendMessage extends Component {
     this.setState({ messages: [] });
   }
 
-  handleClick(e) {
+  handleClick() {
     if (this.state.current) {
-      let message = structure;
+      const message = structure;
       message.messaging[0].message.text = this.state.current;
 
       this.setState({
