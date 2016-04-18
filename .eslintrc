@@ -1,9 +1,14 @@
 {
-  "extends": "airbnb/legacy",
+  "extends": "airbnb",
+  "parser": "babel-eslint",
   "env": {
+    "browser": true,
     "node": true,
+    "mocha": true,
    },
-   "rules": {
-    "no-console": ["error", { allow: ["warn", "error", "log"] }]
-   }
+   "ecmaFeatures": {
+    "jsx": true,
+    "es6": true,
+    "classes": true,
+   },
 }
