@@ -4,7 +4,7 @@ var path    = require('path');
 module.exports = {
 
   entry: {
-    app: path.join(__dirname, 'fake', 'js'),
+    app: path.join(__dirname, 'src', 'public', 'js'),
   },
 
   output: {

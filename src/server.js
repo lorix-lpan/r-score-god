@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'fake', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/webhook/', (req, res) => {
