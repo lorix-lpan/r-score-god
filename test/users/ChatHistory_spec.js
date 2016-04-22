@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import ChatHistory from '../src/users/ChatHistory';
-import User from '../src/users/User';
+import ChatHistory from '../../src/users/ChatHistory';
+import User from '../../src/users/User';
 
 describe('A list of acitve users', () => {
   it('should add user to list', () => {

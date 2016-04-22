@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import User from '../src/users/User';
+import User from '../../src/users/User';
 
 describe('a user', () => {
   it('should be correctly initiated', () => {
