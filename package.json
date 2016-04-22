@@ -4,7 +4,7 @@
   "description": "Rob The R Score God: a Facebook Messenger Chatbot that inspires millions.",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node index.js"
+    "start": "cross-env NODE_ENV=development nodemon index.js"
   },
   "repository": {
     "type": "git",
