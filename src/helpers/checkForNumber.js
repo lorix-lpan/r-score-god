@@ -1,17 +1,15 @@
-function checkForNumber(comment){
-  //separate the words
+function checkForNumber(comment) {
+  // separate the words
   const words = comment.split(' ');
 
   let answer;
-  //  words = {'hello', 'hi'};
-  for(let y = 0; y < words.length; y++) {
-
+  // words = {'hello', 'hi'};
+  for (let y = 0; y < words.length; y ++) {
     let allNumbers = true;
 
-    //check if the word is made of numbers
+    // check if the word is made of numbers
     for (let x = 0; x < words[y].length; x ++) {
-      console.log(words[y].charCodeAt(0));
-      //if it is a number
+      // if it is a number
       if (words[y].charCodeAt(x) < 48 || words[y].charCodeAt(x) > 57) {
         allNumbers = false;
       }

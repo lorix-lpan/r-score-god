@@ -1,11 +1,13 @@
 import checkForNumber from '../helpers/checkForNumber';
+import users from '../users/index';
 
-let step = 0;
 // produce a response according to message from user
-function rootResponse(message) {
-  switch (step) {
+function rootResponse(message, sender) {
+  const current = users.getUser(sender);
+
+  switch (current.step) {
     case 0:
-      step ++;
+      current.addStep();
       return 'what is your r-score, you little prick?';
 
     case 1:

@@ -10,7 +10,7 @@ function formatResponse({ text }, sender) {
     json: {
       recipient: { id: sender },
       message: {
-        text: rootResponse(text),
+        text: rootResponse(text, sender),
       },
     },
   };
