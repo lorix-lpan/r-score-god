@@ -6,6 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon index.js",
     "start:prod": "cross-env NODE_ENV=production node index.js",
+    "restart": "sudo systemctl restart r-score-god.service",
     "test": "mocha --compilers js:babel-core/register --recursive"
   },
   "repository": {
