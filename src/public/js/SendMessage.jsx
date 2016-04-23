@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import request from './request';
 
+const userId = Math.random().toString().substring(2, 9);
+
 const structure = {
   id: '',
   time: '',
   messaging: [
     {
       sender: {
-        id: '',
+        id: userId,
       },
       recipient: {
         id: '',
@@ -26,6 +28,7 @@ class SendMessage extends Component {
 
   constructor() {
     super();
+
     this.state = { current: '', messages: [] };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -62,6 +65,7 @@ class SendMessage extends Component {
   render() {
     return (
       <div>
+        <p>User ID: {userId}</p>
         <input type="text" value={this.state.current} onChange={this.handleChange} />
         <button onClick={this.handleClick}>Send</button>
         <button onClick={this.handleClear}>Clear</button>
