@@ -14,7 +14,7 @@ function rootResponse(message, sender) {
     case 1:
       const rScore = checkForNumber(message);
       if (rScore) {
-        current.setRscore(rScore);
+        current.setRScore(rScore);
         return `I am sure ${rScore} R Score can get you a decent job.
           Do you like flipping burgers?`;
       }
