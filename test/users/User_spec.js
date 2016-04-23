@@ -14,10 +14,17 @@ describe('a user', () => {
 
   it('should add step', () => {
     const id = '12312413543';
-    const time = new Date().getHours();
     const user = new User(id);
 
     user.addStep();
     expect(user.step).to.equal(1);
+  });
+
+  it('should update R Score', () => {
+    const id = '12312413543';
+    const user = new User(id);
+
+    user.setRScore(31);
+    expect(user.rScore).to.equal(31);
   });
 });

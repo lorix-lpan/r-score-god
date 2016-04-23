@@ -5,12 +5,18 @@ class User {
     // Initialize as conversation step is 1
     this.step = 0;
     this.id = id;
+    this.rScore = null;
 
     this.addStep = this.addStep.bind(this);
+    this.setRScore = this.setRScore.bind(this);
   }
 
   addStep() {
     this.step ++;
+  }
+
+  setRScore(score) {
+    this.rScore = score;
   }
 }
 
