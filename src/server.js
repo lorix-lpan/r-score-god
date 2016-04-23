@@ -63,7 +63,7 @@ app.post('/webhook/', (req, res) => {
         sendTestRespond(sender, text.substring(0, 200), res);
       } else {
         sendTextMessage(sender, text.substring(0, 200));
-        res.send(200);
+        res.sendStatus(200);
       }
     }
   }
