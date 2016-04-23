@@ -1,7 +1,6 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
 import request from 'request';
-import path from 'path';
 
 // Webpack Requirements
 import webpack from 'webpack';
@@ -27,7 +26,18 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.send(`
+    <!Doctype html>
+    <html>
+      <head>
+        <title>Test Your Messenger Bot</title>
+      </head>
+      <body>
+        <div id="root"></div>
+        <script src="bundle.js"></script>
+      </body>
+    </html>
+    `);
 });
 
 app.get('/webhook/', (req, res) => {
