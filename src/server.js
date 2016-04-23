@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 
 app.get('/', (req, res) => {
@@ -40,9 +40,9 @@ app.get('/webhook/', (req, res) => {
 function sendTextMessage(sender, text) {
   request(formatResponse({ text }, sender), (error, response) => {
     if (error) {
-      console.log('Error sending message: ', error);
+      console.log('Error sending message: ', error); // eslint-disable-line
     } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
+      console.log('Error: ', response.body.error); // eslint-disable-line
     }
   });
 }
@@ -58,8 +58,7 @@ app.post('/webhook/', (req, res) => {
     const event = req.body.entry[0].messaging[i];
     const sender = event.sender.id;
     if (event.message && event.message.text) {
-      let text = event.message.text;
-      console.log(text);
+      const text = event.message.text;
       if (process.env.NODE_ENV !== 'production') {
         sendTestRespond(sender, text.substring(0, 200), res);
       } else {
@@ -72,6 +71,6 @@ app.post('/webhook/', (req, res) => {
 
 app.listen(serverPort, (err) => {
   if (!err) {
-    console.log('Server running on port ' + serverPort);
+    console.log(`Server running on port ${serverPort}`); // eslint-disable-line
   }
 });

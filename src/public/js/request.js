@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-let host = 'localhost:3990';
+const host = 'localhost:3990';
 
 export default function (message, callback) {
   const getUrl = `http://${host}/webhook`;

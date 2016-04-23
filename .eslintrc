@@ -7,8 +7,8 @@
     "mocha": true,
    },
    "ecmaFeatures": {
-    "jsx": true,
     "es6": true,
     "classes": true,
-   },
+    "jsx": true,
+   }
 }
