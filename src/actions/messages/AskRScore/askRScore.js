@@ -1,7 +1,8 @@
 function askRScore() {
   return [
-    'My sweet child, what is you lovely R Score?',
-    'Tell me your R Score I will give you a cookie',
+    'my sweet child, what is you lovely r score?',
+    'tell me your r score and i will give you a cookie',
+    'r score is love, r score is life. What is your r score kid?',
   ];
 }
 

@@ -1,7 +1,7 @@
 function noRScore() {
   return [
-    'Just tell me your R Score you little puspus',
-    'Are you too scared to tell me your R Score you Pleb?',
+    'just tell me your r score smh',
+    'what is your lovely r score?',
   ];
 }
 
