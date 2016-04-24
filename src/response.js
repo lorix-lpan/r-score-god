@@ -1,6 +1,6 @@
 import rootResponse from './actions/root';
 
-const token = 'CAANhtjyR1X8BADVXLbrMgnuX62VYVKYEBo4W7K0f5z3ZAU2XdypuGt9YiB3aE5ZCZCfh9ZAmMHBgOCtWP2SfiGKx0pKSutaH5GwZBkBsmAoEgPhBrZApGWJDweKfOZAZBzOZCSTSLpntG1LDvDGnr6OIgyTPFT00CAgdbGktxKgTEZCVVxLQTgAXuTIJvVpZAPvISIZD'; // eslint-disable-line
+const token = 'CAANhtjyR1X8BAMniOZA7HC1SxI1eNURS69wRWQr74lVTcgp2ZBPJxTlapjwIPe9YfZCOyRsCydC1VZAIt5TgDO7IfcltFehXHHiqgm95UZAluZCJOSfopBGVwxPwFaxqc3BpLBtT6fN2IwyvO00RZB2QMdZCYId9tLw9lvTj0PPTKTxKGAO5c1gkmHs5xtpgKvIZD'; // eslint-disable-line
 
 function formatResponse({ text }, sender) {
   return {
