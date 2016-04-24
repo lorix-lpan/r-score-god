@@ -16,13 +16,4 @@ function formatResponse({ text }, sender) {
   };
 }
 
-
-
-
-
-
 export default formatResponse;
-
-
-
-
