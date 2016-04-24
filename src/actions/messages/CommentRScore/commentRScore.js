@@ -1,10 +1,36 @@
+import reallyBad from './ReallyBad/reallyBad';
+import bad from './Bad/bad';
+import mediocre from './Mediocre/mediocre';
+import good from './Good/good';
+import reallyGood from './ReallyGood/reallyGood';
+import outOfBound from './OutOfBound/outOfBound';
+
 function commentRScore(rScore) {
-  return [
-    `i am sure ${rScore} r score can get you a decent job. what about flipping burgers?`,
-    'cute <3! you are almost as old as your r score',
-    `i had ${rScore} too when I was in cegep :)! jkjk, I had ${rScore * 2}.`,
-    `be happy my child, if you take enriched mechanics, you will get ${rScore / 2} r score`,
-  ];
+  if (rScore > 0 && rScore <= 18) {
+    return reallyBad(rScore);
+  }
+
+  if (rScore > 18 && rScore <= 26) {
+    return bad(rScore);
+  }
+
+  if (rScore > 26 && rScore <= 30) {
+    return mediocre(rScore);
+  }
+
+  if (rScore > 30 && rScore <= 34) {
+    return good(rScore);
+  }
+
+  if (rScore > 34 && rScore <= 44) {
+    return reallyGood(rScore);
+  }
+
+  if (rScore === 69) {
+    return ['You are either Yunhan or you are BFFs with Yunhan ;)'];
+  }
+
+  return outOfBound(rScore);
 }
 
 export default commentRScore;
