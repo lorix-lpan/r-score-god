@@ -26,6 +26,7 @@ function commentRScore(rScore) {
     return reallyGood(rScore);
   }
 
+  // easter eggs
   if (rScore === 69) {
     return ['You are either Yunhan or you are BFFs with Yunhan ;)'];
   }

@@ -22,7 +22,7 @@ function checkForNumber(comment) {
       answer = words[y];
     }
   }
-  return answer;
+  return parseInt(answer, 10);
 }
 
 export default checkForNumber;
