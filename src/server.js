@@ -47,8 +47,8 @@ app.get('/webhook/', (req, res) => {
   res.send('Error, wrong validation token');
 });
 
-function sendTextMessage(sender, text) {
-  request(formatResponse({ text }, sender), (error, response) => {
+function sendTextMessage(sender, text, stickerId) {
+  request(formatResponse(sender, text, stickerId), (error, response) => {
     if (error) {
       console.log('Error sending message: ', error); // eslint-disable-line
     } else if (response.body.error) {
@@ -66,7 +66,12 @@ app.post('/webhook/', (req, res) => {
 
   for (let i = 0; i < messagingEvents.length; i++) {
     const event = req.body.entry[0].messaging[i];
+    console.log(event);
     const sender = event.sender.id;
+    if (event.message.attachments) {
+      sendTextMessage(sender, '', event.message.sticker_id);
+      res.sendStatus(200);
+    }
     if (event.message && event.message.text) {
       const text = event.message.text;
       if (process.env.NODE_ENV !== 'production') {
